@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pisang Jago - Jagonya Pisang</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            overflow-x: hidden;
+            background-color: #fff;
+            color: #333;
+        }
+
+        /* Hero Section */
+        .hero-split {
+            display: flex;
+            flex-direction: row;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        .hero-left {
+            flex: 1;
+            background-color: #FFC107;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-right {
+            flex: 1;
+            background-color: #fff;
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .brand-logo {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .product-image-container {
+            position: relative;
+            width: 80%;
+            height: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-image {
+            width: 80%;
+            max-width: 350px;
+            z-index: 2;
+            filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.1));
+        }
+
+        .ingredients-display {
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 3;
+        }
+
+        .ingredient-item {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 2px solid #FFC107;
+            transition: all 0.3s ease;
+        }
+
+        .ingredient-item:hover {
+            transform: scale(1.1);
+            border-color: #E65100;
+        }
+
+        .brand-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .brand-slogan {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            color: #E65100;
+        }
+
+        .product-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            color: #666;
+            max-width: 450px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: #E65100;
+            color: white;
+            font-weight: 600;
+            border: none;
+            border-radius: 3px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #BF360C;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(230, 81, 0, 0.2);
+        }
+
+        .social-icons {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-icons a {
+            color: #333;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #E65100;
+            transform: translateY(-3px);
+        }
+
+        /* Decorative elements */
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            z-index: 1;
+        }
+
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            top: -50px;
+            left: -50px;
+        }
+
+        .circle-2 {
+            width: 200px;
+            height: 200px;
+            bottom: 50px;
+            right: 100px;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .hero-split {
+                flex-direction: column;
+            }
+
+            .hero-left, .hero-right {
+                width: 100%;
+            }
+
+            .hero-left {
+                min-height: 50vh;
+            }
+
+            .hero-right {
+                padding: 3rem 2rem;
+            }
+
+            .brand-name {
+                font-size: 2rem;
+            }
+
+            .ingredients-display {
+                right: 0;
+                flex-direction: row;
+                bottom: 20px;
+                top: auto;
+                transform: none;
+                width: 100%;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .ingredient-item {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Split Hero Section -->
+    <section class="hero-split">
+        <!-- Left Side - Product Showcase -->
+        <div class="hero-left">
+            <div class="brand-logo">PISANG JAGO</div>
+            
+            <div class="bg-circle circle-1"></div>
+            <div class="bg-circle circle-2"></div>
+            
+            <div class="product-image-container">
+                <img src="/api/placeholder/350/350" alt="Keripik Pisang Premium" class="product-image">
+                
+                <div class="ingredients-display">
+                    <div class="ingredient-item" title="Pisang Pilihan">
+                        <img src="/api/placeholder/30/30" alt="Pisang">
+                    </div>
+                    <div class="ingredient-item" title="Gula Premium">
+                        <img src="/api/placeholder/30/30" alt="Gula">
+                    </div>
+                    <div class="ingredient-item" title="Minyak Berkualitas">
+                        <img src="/api/placeholder/30/30" alt="Minyak">
+                    </div>
+                    <div class="ingredient-item" title="Rempah Alami">
+                        <img src="/api/placeholder/30/30" alt="Rempah">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Side - Product Information -->
+        <div class="hero-right">
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+            
+            <h1 class="brand-name">PISANG JAGO</h1>
+            <h2 class="brand-slogan">Jagonya Pisang</h2>
+            
+            <p class="product-description">
+                Nikmati sensasi renyah dan lezat dari keripik pisang premium kami. Dibuat dari pisang pilihan yang diolah dengan teknologi modern namun tetap mempertahankan cita rasa tradisional Indonesia. Dengan berbagai varian rasa yang menggugah selera, Pisang Jago hadir untuk menemani setiap momen berharga Anda.
+            </p>
+            
+            <a href="#" class="cta-button">Pesan Sekarang</a>
+        </div>
+    </section>
+
+    <script>
+        // Simple hover effect for ingredients
+        document.addEventListener('DOMContentLoaded', function() {
+            const ingredientItems = document.querySelectorAll('.ingredient-item');
+            
+            ingredientItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.1)';
+                    this.style.borderColor = '#E65100';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                    this.style.borderColor = '#FFC107';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
