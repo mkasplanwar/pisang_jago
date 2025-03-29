@@ -1,103 +1,230 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maintenance Mode</title>
-    <!-- Tailwind CSS -->
+    <title>PisangJago.com - Coming Soon</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class', // Aktifkan dark mode dengan class
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#1E293B', /* Slate-800 */
-                        secondary: '#0EA5E9', /* Sky-500 */
-                        accent: '#FACC15', /* Amber-400 */
-                        darkBg: '#1E293B', /* Background dark mode */
-                        lightBg: '#F8FAFC', /* Background light mode */
-                    },
-                },
-            },
-        };
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .construction-element {
+            opacity: 0;
+        }
+        
+        .construction-area {
+            position: relative;
+            height: 200px;
+        }
+        
+        .crane {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .animated-line {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: dash 3s linear forwards;
+        }
+        
+        @keyframes dash {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+        
+        .loader {
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, #FACC15, #FBBF24, #F59E0B);
+            border-radius: 3px;
+            animation: loader-progress 2.5s ease-in-out infinite;
+        }
+        
+        @keyframes loader-progress {
+            0% { width: 0%; opacity: 1 }
+            50% { width: 100%; opacity: 1 }
+            100% { width: 100%; opacity: 0 }
+        }
+    </style>
 </head>
-<body class="bg-lightBg text-lightText dark:bg-darkBg dark:text-darkText transition duration-300">
-    <!-- Tombol Toggle Dark Mode -->
-    <button id="toggle-theme" 
-            class="absolute top-4 right-4 px-3 py-1 text-sm font-medium bg-accent text-black rounded shadow-md">
-        🌑 Mode
-    </button>
-
-    <!-- Konten Utama -->
-    <div class="flex flex-col items-center justify-center h-screen space-y-6 text-center">
-        <div>
-            <h1 class="text-4xl font-bold text-primary dark:text-accent">
-                Website Sedang Dibuat
-            </h1>
-            <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
-                Anwar & Lutfan Sedang Membuat Desain Webnya. Dan Kami Sedang Mengumpulkan Uang Untuk Membeli Domain dan Hosting.
-            </p>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center">
+    <!-- Main Container -->
+    <div class="max-w-md mx-auto px-4 py-12">
+        <!-- Construction Animation -->
+        <div class="construction-area mb-8">
+            <svg class="crane w-full h-full" viewBox="0 0 240 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Base -->
+                <rect x="100" y="160" width="40" height="10" rx="2" fill="#374151" class="construction-element" id="base"/>
+                
+                <!-- Tower -->
+                <rect x="112" y="100" width="16" height="60" fill="#4B5563" class="construction-element" id="tower"/>
+                
+                <!-- Crane Arm -->
+                <rect x="60" y="100" width="120" height="8" fill="#6B7280" class="construction-element" id="arm"/>
+                
+                <!-- Cabin -->
+                <rect x="104" y="92" width="32" height="16" rx="2" fill="#6B7280" class="construction-element" id="cabin"/>
+                
+                <!-- Cable -->
+                <line x1="80" y1="100" x2="80" y2="140" stroke="#9CA3AF" stroke-width="2" stroke-dasharray="4 2" class="construction-element" id="cable"/>
+                
+                <!-- Hook -->
+                <path d="M75 140 L85 140 L85 145 L82 150 L78 150 L75 145 Z" fill="#9CA3AF" class="construction-element" id="hook"/>
+                
+                <!-- Banana Load -->
+                <path d="M75 150 C75 150, 73 160, 80 165 C87 170, 87 155, 80 155 C73 155, 73 170, 80 175 C87 180, 87 165, 80 165" fill="#FACC15" stroke="#F59E0B" stroke-width="1.5" class="construction-element" id="banana"/>
+                
+                <!-- Drawing Lines -->
+                <path d="M20 80 C50 40, 100 30, 120 30 C140 30, 180 40, 220 80" stroke="#9CA3AF" stroke-width="1.5" class="animated-line construction-element" id="blueprint1"/>
+                <path d="M40 100 C70 70, 100 60, 120 60 C140 60, 170 70, 200 100" stroke="#9CA3AF" stroke-width="1.5" class="animated-line construction-element" id="blueprint2"/>
+            </svg>
         </div>
-
-        <!-- Ikon -->
-        <div class="flex space-x-6 text-secondary dark:text-accent animate-bounce">
-            <i class="fas fa-cogs text-4xl"></i>
-            <i class="fas fa-tools text-4xl"></i>
-            <i class="fas fa-sync-alt text-4xl"></i>
+        
+        <!-- Logo -->
+        <div class="mb-6 text-center">
+            <div class="inline-block">
+                <span class="text-3xl font-bold text-yellow-400 mr-1">🍌</span>
+                <span class="text-3xl font-bold text-gray-700">Pisang<span class="text-yellow-500">Jago</span></span>
+            </div>
         </div>
-
-        <!-- Countdown Timer -->
-        <div>
-            <p class="text-lg text-gray-700 dark:text-gray-400">PisangJago.com Akan Selesai Dalam:</p>
-            <p id="countdown" class="text-2xl font-semibold text-gray-900 dark:text-white"></p>
+        
+        <!-- Text Content -->
+        <div class="text-center mb-8 space-y-3">
+            <h1 class="text-2xl font-semibold text-gray-800">Website Dalam Proses</h1>
+            <p class="text-gray-600">Anwar & Lutfan sedang mendesain</p>
+            <div class="loader mx-auto"></div>
+        </div>
+        
+        <!-- Progress Bar -->
+        <div class="mb-8">
+            <div class="flex justify-between text-sm text-gray-600 mb-1">
+                <span>Progres Pengumpulan Dana</span>
+                <span id="percentage">0%</span>
+            </div>
+            <div class="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
+                <div id="progress-bar" class="h-full bg-yellow-400 rounded-full transition-all duration-1000" style="width: 0%"></div>
+            </div>
+            <p class="mt-2 text-sm text-gray-500 text-center">Untuk domain PisangJago.com</p>
+        </div>
+        
+        <!-- Countdown -->
+        <div class="text-center">
+            <div class="grid grid-cols-4 gap-2 mb-2">
+                <div class="bg-white p-2 rounded-lg shadow-sm">
+                    <div id="days" class="text-xl font-semibold text-gray-800">00</div>
+                    <div class="text-xs text-gray-500">Hari</div>
+                </div>
+                <div class="bg-white p-2 rounded-lg shadow-sm">
+                    <div id="hours" class="text-xl font-semibold text-gray-800">00</div>
+                    <div class="text-xs text-gray-500">Jam</div>
+                </div>
+                <div class="bg-white p-2 rounded-lg shadow-sm">
+                    <div id="minutes" class="text-xl font-semibold text-gray-800">00</div>
+                    <div class="text-xs text-gray-500">Menit</div>
+                </div>
+                <div class="bg-white p-2 rounded-lg shadow-sm">
+                    <div id="seconds" class="text-xl font-semibold text-gray-800">00</div>
+                    <div class="text-xs text-gray-500">Detik</div>
+                </div>
+            </div>
+            <p class="text-sm text-gray-500">Hingga selesai</p>
         </div>
     </div>
 
-    <!-- FontAwesome Icons -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
-    <!-- JavaScript -->
     <script>
-        // Tombol Dark Mode
-        const toggleTheme = document.getElementById('toggle-theme');
-        const htmlElement = document.documentElement;
-
-        toggleTheme.addEventListener('click', () => {
-            // Toggle class "dark" pada elemen <html>
-            htmlElement.classList.toggle('dark');
-
-            // Ubah teks tombol berdasarkan mode saat ini
-            toggleTheme.textContent = htmlElement.classList.contains('dark') 
-                ? '🌑 Mode' 
-                : '☀️ Mode';
+        // GSAP Animation for Construction Elements
+        document.addEventListener('DOMContentLoaded', () => {
+            // Timeline for construction animation
+            const tl = gsap.timeline({repeat: -1, repeatDelay: 1});
+            
+            // Animate base and tower
+            tl.to("#base", {duration: 0.5, opacity: 1})
+              .to("#tower", {duration: 0.5, opacity: 1, height: 60, y: 0})
+              .to("#cabin", {duration: 0.3, opacity: 1})
+              .to("#arm", {duration: 0.5, opacity: 1})
+              .to("#blueprint1, #blueprint2", {duration: 0.3, opacity: 1})
+              .to("#cable", {duration: 0.5, opacity: 1})
+              .to("#hook", {duration: 0.3, opacity: 1})
+              .to("#banana", {duration: 0.3, opacity: 1})
+              .to("#hook, #banana", {
+                  duration: 2, 
+                  y: -40, 
+                  yoyo: true, 
+                  repeat: 1,
+                  ease: "power1.inOut"
+              })
+              .to("#blueprint1, #blueprint2, #tower, #cabin, #arm, #cable, #hook, #banana, #base", {
+                  duration: 1, 
+                  opacity: 0, 
+                  delay: 1,
+                  stagger: 0.1
+              });
         });
-
+        
+        // Progress Bar Animation
+        const progressBar = document.getElementById('progress-bar');
+        const percentageText = document.getElementById('percentage');
+        let progress = 0;
+        const targetProgress = 65; // Target 65%
+        
+        function updateProgress() {
+            if (progress < targetProgress) {
+                progress += Math.random() * 1.5;
+                if (progress > targetProgress) progress = targetProgress;
+                
+                progressBar.style.width = progress + '%';
+                percentageText.textContent = Math.round(progress) + '%';
+            }
+        }
+        
+        // Start progress update
+        const progressInterval = setInterval(updateProgress, 800);
+        
         // Countdown Timer
-        const countdownElement = document.getElementById('countdown');
-        const targetDate = new Date().getTime() + 256 * 60 * 60 * 1000; // 2 days from now
-
+        const daysEl = document.getElementById('days');
+        const hoursEl = document.getElementById('hours');
+        const minutesEl = document.getElementById('minutes');
+        const secondsEl = document.getElementById('seconds');
+        
+        const targetDate = new Date().getTime() + 30 * 24 * 60 * 60 * 1000; // 30 days from now
+        
         function updateCountdown() {
             const now = new Date().getTime();
             const distance = targetDate - now;
-
+            
             if (distance <= 0) {
-                countdownElement.textContent = 'Maintenance selesai!';
-                clearInterval(interval);
+                clearInterval(countdownInterval);
+                daysEl.textContent = "00";
+                hoursEl.textContent = "00";
+                minutesEl.textContent = "00";
+                secondsEl.textContent = "00";
                 return;
             }
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            
+            const days = Math.floor(distance / (5000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60)) / (1000 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            
+            daysEl.textContent = days < 10 ? `0${days}` : days;
+            hoursEl.textContent = hours < 10 ? `0${hours}` : hours;
+            minutesEl.textContent = minutes < 10 ? `0${minutes}` : minutes;
+            secondsEl.textContent = seconds < 10 ? `0${seconds}` : seconds;
         }
-
-        const interval = setInterval(updateCountdown, 1000);
-        updateCountdown(); // Panggilan awal
+        
+        // Start countdown update
+        updateCountdown();
+        const countdownInterval = setInterval(updateCountdown, 1000);
     </script>
 </body>
 </html>
