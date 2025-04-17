@@ -3,924 +3,900 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pisang Jago - Keripik Pisang Premium</title>
+    <title>Pisang Jago - Keripik Pisang Terenak</title>
     <style>
-        /* CSS Reset */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        
+        :root {
+            --primary: #FFD700;
+            --secondary: #FFC107;
+            --accent: #FF8C00;
+            --dark: #704214;
+            --light: #FFF9E6;
+            --text: #333333;
+            --white: #FFFFFF;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
         }
-
-        /* Variabel */
-        :root {
-            --primary: #FFC107;
-            --secondary: #8D6E63;
-            --dark: #5D4037;
-            --light: #FFFDE7;
-            --accent: #FF6F00;
-        }
-
+        
         body {
-            background-color: #f9f9f9;
+            background-color: var(--light);
+            color: var(--text);
+            overflow-x: hidden;
         }
-
-        /* Header & Navigasi */
-        header {
-            position: relative;
+        
+        .container {
             width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-
-        .navbar {
+        
+        /* Header & Navigation */
+        header {
             position: absolute;
+            width: 100%;
             top: 0;
             left: 0;
-            width: 100%;
-            padding: 1rem 5%;
+            z-index: 100;
+            padding: 20px 0;
+        }
+        
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 100;
         }
-
+        
         .logo {
             display: flex;
             align-items: center;
-            text-decoration: none;
+            gap: 10px;
         }
-
+        
         .logo img {
-            height: 50px;
+            height: 40px;
         }
-
-        .logo-text {
-            margin-left: 10px;
-            color: var(--light);
+        
+        .logo h1 {
             font-size: 24px;
             font-weight: 700;
+            color: var(--dark);
         }
-
+        
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 30px;
         }
-
+        
         .nav-links a {
-            color: var(--light);
+            color: var(--dark);
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s ease;
+            position: relative;
         }
-
-        .nav-links a:hover {
-            color: var(--primary);
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
         }
-
-        .nav-buttons {
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .nav-icons {
             display: flex;
-            gap: 1rem;
-            align-items: center;
+            gap: 20px;
         }
-
-        .nav-buttons a {
-            color: var(--light);
+        
+        .nav-icons a {
+            color: var(--dark);
             font-size: 20px;
         }
-
+        
         .mobile-toggle {
             display: none;
-            cursor: pointer;
+            background: none;
+            border: none;
             font-size: 24px;
-            color: var(--light);
+            color: var(--dark);
+            cursor: pointer;
         }
-
+        
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--accent), var(--secondary));
-            height: 100vh;
-            min-height: 600px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: 0 5%;
-            color: white;
             position: relative;
             overflow: hidden;
         }
-
+        
         .hero-content {
             width: 50%;
+            padding: 100px 0;
             position: relative;
             z-index: 2;
         }
-
+        
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 56px;
             font-weight: 800;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1rem;
-            margin-bottom: 2rem;
-            max-width: 500px;
-        }
-
-        .hero-img {
-            position: absolute;
-            right: 5%;
-            bottom: 5%;
-            width: 45%;
-            z-index: 1;
-        }
-
-        .shop-now-btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: var(--primary);
             color: var(--dark);
-            text-decoration: none;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            color: var(--dark);
+            margin-bottom: 30px;
+            max-width: 90%;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background-color: var(--dark);
+            color: var(--white);
+            border: none;
             border-radius: 30px;
             font-weight: 600;
+            text-decoration: none;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
-
-        .shop-now-btn:hover {
-            background-color: #FFD54F;
+        
+        .btn:hover {
+            background-color: var(--accent);
             transform: translateY(-3px);
         }
-
-        .scroll-down {
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--dark);
+            color: var(--dark);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--dark);
+            color: var(--white);
+        }
+        
+        .hero-image {
             position: absolute;
-            bottom: 5%;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            width: 50%;
             display: flex;
             justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            z-index: 10;
-            animation: bounce 2s infinite;
+            z-index: 1;
         }
-
-        @keyframes bounce {
+        
+        .hero-image img {
+            max-width: 90%;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
             0%, 100% {
-                transform: translateY(0) translateX(-50%);
+                transform: translateY(0);
             }
             50% {
-                transform: translateY(-10px) translateX(-50%);
+                transform: translateY(-15px);
             }
         }
-
-        /* Best Sellers Section */
-        .section {
-            padding: 4rem 5%;
+        
+        .hero-shape {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background-color: var(--light);
+            border-radius: 100% 100% 0 0;
         }
-
-        .section-title {
+        
+        /* Best Sellers Section */
+        .best-sellers {
+            padding: 80px 0;
+        }
+        
+        .section-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
+            margin-bottom: 40px;
         }
-
-        .section-title h2 {
-            color: var(--dark);
-            font-size: 2rem;
+        
+        .section-header h2 {
+            font-size: 32px;
             font-weight: 700;
+            color: var(--dark);
         }
-
-        .shop-all {
+        
+        .view-all {
             color: var(--accent);
             text-decoration: none;
+            font-weight: 500;
             display: flex;
             align-items: center;
-            font-weight: 500;
+            gap: 5px;
         }
-
-        .shop-all i {
-            margin-left: 5px;
-        }
-
-        .products-grid {
+        
+        .products {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
+            gap: 30px;
         }
-
+        
         .product-card {
-            background-color: white;
-            border-radius: 15px;
+            background-color: var(--white);
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
         }
-
+        
         .product-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
-
-        .product-img {
+        
+        .product-image {
             height: 200px;
             display: flex;
+            align-items: center;
             justify-content: center;
-            align-items: center;
-            padding: 1rem;
-        }
-
-        .product-img img {
-            max-height: 100%;
-            max-width: 100%;
-            object-fit: contain;
-        }
-
-        .product-info {
-            padding: 1rem;
-        }
-
-        .rating {
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-
-        .product-name {
-            font-weight: 600;
-            margin-bottom: 5px;
-            color: var(--dark);
-        }
-
-        .product-flavor {
-            color: #888;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-        }
-
-        .price {
-            font-weight: 700;
-            color: var(--dark);
-            font-size: 1.2rem;
-        }
-
-        /* Featured Section */
-        .featured {
-            background-color: #f2f2f2;
-            position: relative;
-        }
-
-        .featured-container {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .featured-img {
-            width: 50%;
-            position: relative;
-        }
-
-        .featured-img img {
-            width: 100%;
-            border-radius: 15px;
-        }
-
-        .featured-content {
-            width: 45%;
-            background-color: var(--secondary);
-            color: white;
-            padding: 3rem;
-            border-radius: 15px;
-        }
-
-        .featured-content h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .featured-content p {
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        /* Taste Section */
-        .taste-cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .taste-card {
+            background-color: var(--light);
             position: relative;
             overflow: hidden;
-            border-radius: 15px;
-            height: 300px;
         }
-
-        .taste-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        
+        .product-image img {
+            max-width: 80%;
+            max-height: 80%;
+            transition: all 0.3s ease;
         }
-
-        .taste-overlay {
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-tag {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
-            padding: 2rem;
-            color: white;
-        }
-
-        .taste-overlay h3 {
-            margin-bottom: 1rem;
+            top: 15px;
+            left: 15px;
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
             font-weight: 600;
         }
-
-        /* Newsletter Section */
-        .newsletter {
-            background-color: var(--dark);
-            color: white;
-            text-align: center;
-            padding: 3rem 5%;
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-rating {
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .product-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .product-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: var(--white);
             position: relative;
         }
-
-        .newsletter h2 {
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-        }
-
-        .newsletter p {
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .email-form {
+        
+        .about-container {
             display: flex;
-            max-width: 500px;
-            margin: 0 auto;
+            align-items: center;
+            gap: 50px;
         }
-
-        .email-input {
+        
+        .about-image {
             flex: 1;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 30px 0 0 30px;
-            font-size: 1rem;
+            position: relative;
         }
-
-        .subscribe-btn {
-            padding: 12px 25px;
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-content {
+            flex: 1;
+        }
+        
+        .about-content h2 {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+        
+        .about-content p {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+        
+        .about-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .stat-item {
+            flex: 1;
+        }
+        
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+        
+        .stat-text {
+            font-size: 14px;
+            color: var(--text);
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 80px 0;
+            background-color: var(--dark);
+            text-align: center;
+            color: var(--white);
+        }
+        
+        .cta h2 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-btn {
             background-color: var(--primary);
             color: var(--dark);
-            border: none;
-            border-radius: 0 30px 30px 0;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
         }
-
-        .subscribe-btn:hover {
-            background-color: #FFD54F;
+        
+        .cta-btn:hover {
+            background-color: var(--secondary);
         }
-
-        .chips-decoration {
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            height: 100px;
-            opacity: 0.3;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--accent);
-            color: white;
-            padding: 3rem 5% 1rem;
-        }
-
-        .footer-top {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-logo {
-            margin-bottom: 1rem;
-        }
-
-        .footer-logo img {
-            height: 50px;
-        }
-
-        .footer-about {
-            max-width: 300px;
-            margin-bottom: 1rem;
-            line-height: 1.6;
-            font-size: 0.9rem;
-        }
-
-        .footer-column h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a {
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary);
-        }
-
-        .app-download {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .app-store, .play-store {
-            height: 40px;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.8rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-icon {
-            width: 30px;
-            height: 30px;
+        
+        .social-proof {
             display: flex;
             justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .social-proof img {
+            height: 40px;
+            opacity: 0.7;
+            filter: brightness(0) invert(1);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--light);
+            padding: 80px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-logo {
+            display: flex;
             align-items: center;
-            background-color: rgba(255, 255, 255, 0.1);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo img {
+            height: 40px;
+        }
+        
+        .footer-logo h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
+        .footer-about p {
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: var(--dark);
+            color: var(--white);
             border-radius: 50%;
             transition: all 0.3s ease;
         }
-
-        .social-icon:hover {
-            background-color: var(--primary);
-            color: var(--dark);
+        
+        .footer-social a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
         }
-
-        /* Mobile Responsiveness */
+        
+        .footer-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+        
+        .footer-contact li {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .footer-contact li i {
+            color: var(--accent);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .footer-bottom-links a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Responsive Styles */
         @media (max-width: 1024px) {
-            .products-grid {
+            .products {
                 grid-template-columns: repeat(3, 1fr);
             }
-        }
-
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 1rem;
+            
+            .hero h1 {
+                font-size: 48px;
             }
-
-            .nav-links, .nav-buttons {
+            
+            .hero-content {
+                width: 60%;
+            }
+            
+            .hero-image {
+                width: 40%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links, .nav-icons {
                 display: none;
             }
-
+            
             .mobile-toggle {
                 display: block;
             }
-
-            .hero-content {
+            
+            .hero-content, .hero-image {
                 width: 100%;
                 text-align: center;
             }
-
-            .hero h1 {
-                font-size: 2.5rem;
+            
+            .hero-content {
+                padding: 150px 0 50px;
             }
-
+            
             .hero p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .hero-img {
-                display: none;
-            }
-
-            .products-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .featured-container {
-                flex-direction: column;
-            }
-
-            .featured-img, .featured-content {
-                width: 100%;
-            }
-
-            .taste-cards {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-top {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .footer-about {
                 max-width: 100%;
             }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
+            
+            .hero-image {
+                position: relative;
+                transform: none;
+                top: auto;
+                margin-top: -50px;
+                margin-bottom: 50px;
             }
-
-            .social-links {
-                justify-content: center;
+            
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .about-container {
+                flex-direction: column;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
             }
         }
-
-        @media (max-width: 480px) {
-            .products-grid {
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .products {
                 grid-template-columns: 1fr;
             }
-
-            .section {
-                padding: 2rem 1rem;
+            
+            .about-stats {
+                flex-direction: column;
+                gap: 20px;
             }
-
-            .hero h1 {
-                font-size: 2rem;
+            
+            .footer-container {
+                grid-template-columns: 1fr;
             }
-        }
-
-        /* Mobile Menu */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            left: -100%;
-            width: 70%;
-            height: 100vh;
-            background-color: var(--dark);
-            z-index: 999;
-            transition: all 0.5s ease;
-            padding: 2rem;
-        }
-
-        .mobile-menu.active {
-            left: 0;
-        }
-
-        .close-menu {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-        .mobile-menu-links {
-            margin-top: 3rem;
-            list-style: none;
-        }
-
-        .mobile-menu-links li {
-            margin-bottom: 1.5rem;
-        }
-
-        .mobile-menu-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-menu-links a:hover {
-            color: var(--primary);
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background-color: rgba(0, 0, 0, 0.6);
-            z-index: 998;
-            display: none;
-        }
-
-        .overlay.active {
-            display: block;
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+            }
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header & Navbar -->
+    <!-- Header & Navigation -->
     <header>
-        <nav class="navbar">
-            <a href="#" class="logo">
-                <img src="/api/placeholder/100/50" alt="Pisang Jago Logo">
-                <span class="logo-text">Pisang Jago</span>
-            </a>
-            <div class="nav-links">
-                <a href="#">Beranda</a>
-                <a href="#">Produk</a>
-                <a href="#">Buat Sendiri</a>
-                <a href="#">Tentang Kami</a>
-                <a href="#">Kontak</a>
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <img src="/api/placeholder/80/80" alt="Pisang Jago Logo">
+                    <h1>Pisang Jago</h1>
+                </div>
+                <div class="nav-links">
+                    <a href="#">Beranda</a>
+                    <a href="#">Produk</a>
+                    <a href="#">Tentang Kami</a>
+                    <a href="#">Testimoni</a>
+                    <a href="#">Kontak</a>
+                </div>
+                <div class="nav-icons">
+                    <a href="#"><i class="fas fa-search"></i></a>
+                    <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                    <a href="#"><i class="fas fa-user"></i></a>
+                </div>
+                <button class="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
-            <div class="nav-buttons">
-                <a href="#"><i class="fas fa-search"></i></a>
-                <a href="#"><i class="fas fa-shopping-cart"></i></a>
-                <a href="#"><i class="fas fa-user"></i></a>
-            </div>
-            <div class="mobile-toggle" id="mobile-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-        </nav>
-
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Keripik Pisang Premium Pilihan</h1>
-                <p>Keripik pisang terbaik dengan kualitas premium. Dibuat dengan pisang pilihan dan racikan resep rahasia untuk menghadirkan sensasi rasa yang tak terlupakan.</p>
-                <a href="#" class="shop-now-btn">Beli Sekarang <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <img src="/api/placeholder/500/400" alt="Keripik Pisang Jago" class="hero-img">
-            <div class="scroll-down" id="scroll-down">
-                <i class="fas fa-chevron-down"></i>
-            </div>
-        </section>
+        </div>
     </header>
 
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Keripik Pisang Premium Indonesia</h1>
+                <p>Camilan renyah dan lezat dari pisang pilihan terbaik. Diproses dengan teknologi modern untuk menghadirkan cita rasa pisang yang autentik.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn">Beli Sekarang <i class="fas fa-arrow-right"></i></a>
+                    <a href="#" class="btn btn-outline">Pelajari Lebih Lanjut</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="/api/placeholder/500/400" alt="Pisang Jago Keripik Pisang">
+            </div>
+        </div>
+        <div class="hero-shape"></div>
+    </section>
+
     <!-- Best Sellers Section -->
-    <section class="section">
-        <div class="section-title">
-            <h2>Produk Terlaris</h2>
-            <a href="#" class="shop-all">Lihat Semua <i class="fas fa-arrow-right"></i></a>
-        </div>
-        <div class="products-grid">
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="/api/placeholder/200/200" alt="Keripik Pisang Original">
-                </div>
-                <div class="product-info">
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h3 class="product-name">Original Crispy</h3>
-                    <p class="product-flavor">Kemasan Family Size</p>
-                    <p class="price">Rp 25.000</p>
-                </div>
+    <section class="best-sellers">
+        <div class="container">
+            <div class="section-header">
+                <h2>Produk Terlaris</h2>
+                <a href="#" class="view-all">Lihat Semua <i class="fas fa-chevron-right"></i></a>
             </div>
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="/api/placeholder/200/200" alt="Keripik Pisang Balado">
-                </div>
-                <div class="product-info">
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
+            <div class="products">
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="product-tag">Best Seller</span>
+                        <img src="/api/placeholder/300/300" alt="Keripik Pisang Original">
                     </div>
-                    <h3 class="product-name">Balado Pedas</h3>
-                    <p class="product-flavor">Kemasan Regular</p>
-                    <p class="price">Rp 15.000</p>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="/api/placeholder/200/200" alt="Keripik Pisang Manis">
-                </div>
-                <div class="product-info">
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
+                    <div class="product-info">
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="product-title">Keripik Pisang Original</h3>
+                        <div class="product-price">Rp 25.000</div>
+                        <a href="#" class="btn">Tambah ke Keranjang</a>
                     </div>
-                    <h3 class="product-name">Karamel Manis</h3>
-                    <p class="product-flavor">Kemasan Regular</p>
-                    <p class="price">Rp 18.000</p>
                 </div>
-            </div>
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="/api/placeholder/200/200" alt="Custom Keripik Pisang">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="/api/placeholder/300/300" alt="Keripik Pisang Pedas">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <h3 class="product-title">Keripik Pisang Pedas</h3>
+                        <div class="product-price">Rp 28.000</div>
+                        <a href="#" class="btn">Tambah ke Keranjang</a>
+                    </div>
                 </div>
-                <div class="product-info">
-                    <h3 class="product-name">Buat Sendiri</h3>
-                    <p class="product-flavor">Pilih bumbu favorit Anda</p>
-                    <a href="#" class="shop-now-btn" style="font-size: 0.9rem; padding: 8px 15px; margin-top: 10px;">Mulai Sekarang</a>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="product-tag">New</span>
+                        <img src="/api/placeholder/300/300" alt="Keripik Pisang Coklat">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <h3 class="product-title">Keripik Pisang Coklat</h3>
+                        <div class="product-price">Rp 30.000</div>
+                        <a href="#" class="btn">Tambah ke Keranjang</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="/api/placeholder/300/300" alt="Keripik Pisang Manis">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="product-title">Keripik Pisang Manis</h3>
+                        <div class="product-price">Rp 27.000</div>
+                        <a href="#" class="btn">Tambah ke Keranjang</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Featured Section -->
-    <section class="section featured">
-        <div class="featured-container">
-            <div class="featured-img">
-                <img src="/api/placeholder/600/400" alt="Koleksi Keripik Pisang Jago">
-            </div>
-            <div class="featured-content">
-                <h2>Bukan Sekedar Keripik Biasa</h2>
-                <p>Keripik pisang Pisang Jago adalah camilan paling populer dan renyah. Dibuat dengan pisang raja pilihan, diolah dengan metode khusus untuk menghasilkan keripik yang sempurna. Rasanya yang lezat dan teksturnya yang renyah membuat Pisang Jago menjadi pilihan terbaik untuk camilan Anda.</p>
-                <a href="#" class="shop-now-btn">Belanja Sekarang <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Taste Section -->
-    <section class="section">
-        <div class="section-title">
-            <h2>Rasakan Kelezatannya</h2>
-            <a href="#" class="shop-all">Lihat Semua <i class="fas fa-arrow-right"></i></a>
-        </div>
-        <div class="taste-cards">
-            <div class="taste-card">
-                <img src="/api/placeholder/400/500" alt="Orang Makan Keripik">
-                <div class="taste-overlay">
-                    <h3>Saat Santai</h3>
-                    <a href="#" class="shop-now-btn" style="font-size: 0.9rem; padding: 8px 15px;">Beli Sekarang</a>
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="about-container">
+                <div class="about-image">
+                    <img src="/api/placeholder/600/500" alt="Tentang Pisang Jago">
                 </div>
-            </div>
-            <div class="taste-card">
-                <img src="/api/placeholder/400/500" alt="Orang Makan Keripik">
-                <div class="taste-overlay">
-                    <h3>Kumpul Bareng</h3>
-                    <a href="#" class="shop-now-btn" style="font-size: 0.9rem; padding: 8px 15px;">Beli Sekarang</a>
-                </div>
-            </div>
-            <div class="taste-card">
-                <img src="/api/placeholder/400/500" alt="Orang Makan Keripik">
-                <div class="taste-overlay">
-                    <h3>Di Perjalanan</h3>
-                    <a href="#" class="shop-now-btn" style="font-size: 0.9rem; padding: 8px 15px;">Beli Sekarang</a>
+                <div class="about-content">
+                    <h2>Bukan Sekedar Keripik Pisang Biasa</h2>
+                    <p>Pisang Jago adalah keripik pisang premium yang diproduksi dari pisang pilihan berkualitas tinggi dan diproses dengan standar kebersihan yang ketat untuk menghasilkan camilan yang renyah, gurih dan penuh cita rasa.</p>
+                    <p>Kami memilih pisang lokal terbaik dan mengolahnya dengan teknik modern untuk mempertahankan nutrisi dan rasa alami pisang.</p>
+                    <a href="#" class="btn">Tentang Kami <i class="fas fa-arrow-right"></i></a>
+                    
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">5+</div>
+                            <div class="stat-text">Varian Rasa</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">1000+</div>
+                            <div class="stat-text">Pelanggan Puas</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-text">Bahan Alami</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Newsletter Section -->
-    <section class="newsletter">
-        <h2>Dapatkan Penawaran Eksklusif</h2>
-        <p>Daftar sekarang untuk mendapatkan penawaran spesial dan diskon menarik langsung ke email Anda.</p>
-        <form class="email-form">
-            <input type="email" placeholder="Masukkan email Anda" class="email-input" required>
-            <button type="submit" class="subscribe-btn">Berlangganan</button>
-        </form>
-        <img src="/api/placeholder/200/100" alt="Keripik Pisang" class="chips-decoration">
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Dapatkan Penawaran Spesial!</h2>
+            <p>Daftar untuk menerima informasi produk terbaru, diskon eksklusif, dan resep kreatif menggunakan Pisang Jago.</p>
+            <a href="#" class="btn cta-btn">Hubungi Kami di WhatsApp <i class="fab fa-whatsapp"></i></a>
+            
+            <div class="social-proof">
+                <img src="/api/placeholder/120/40" alt="Featured 1">
+                <img src="/api/placeholder/120/40" alt="Featured 2">
+                <img src="/api/placeholder/120/40" alt="Featured 3">
+                <img src="/api/placeholder/120/40" alt="Featured 4">
+            </div>
+        </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-top">
-            <div class="footer-column">
-                <div class="footer-logo">
-                    <img src="/api/placeholder/100/50" alt="Pisang Jago Logo">
-                    <h3>Pisang Jago</h3>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="/api/placeholder/80/80" alt="Pisang Jago Logo">
+                        <h3>Pisang Jago</h3>
+                    </div>
+                    <p>Keripik pisang premium terbaik di Indonesia. Menggunakan bahan alami berkualitas tinggi dan diproses dengan teknologi modern.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
-                <p class="footer-about">Pisang Jago adalah produsen keripik pisang premium dengan berbagai varian rasa. Kami berkomitmen untuk menghadirkan produk berkualitas dengan bahan-bahan pilihan.</p>
-            </div>
-            <div class="footer-column">
-                <h3>Perusahaan</h3>
-                <ul class="footer-links">
-                    <li><a href="#">Tentang Kami</a></li>
-                    <li><a href="#">Karir</a></li>
-                    <li><a href="#">Berita</a></li>
-                    <li><a href="#">Blog</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Bantuan</h3>
-                <ul class="footer-links">
-                    <li><a href="#">Pusat Bantuan</a></li>
-                    <li><a href="#">Kontak Kami</a></li>
-                    <li><a href="#">Syarat & Ketentuan</a></li>
-                    <li><a href="#">Kebijakan Privasi</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Download Aplikasi</h3>
-                <div class="app-download">
-                    <img src="/api/placeholder/120/40" alt="App Store" class="app-store">
-                    <img src="/api/placeholder/120/40" alt="Play Store" class="play-store">
+                
+                <div class="footer-links">
+                    <h4 class="footer-title">Tautan Cepat</h4>
+                    <a href="#">Beranda</a>
+                    <a href="#">Produk</a>
+                    <a href="#">Tentang Kami</a>
+                    <a href="#">Testimoni</a>
+                    <a href="#">Blog</a>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 class="footer-title">Informasi</h4>
+                    <a href="#">Kebijakan Privasi</a>
+                    <a href="#">Syarat & Ketentuan</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Cara Pemesanan</a>
+                    <a href="#">Metode Pembayaran</a>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4 class="footer-title">Kontak Kami</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Jl. Pisang Raya No. 123, Jakarta Selatan</li>
+                        <li><i class="fas fa-phone"></i> +62 812 3456 7890</li>
+                        <li><i class="fas fa-envelope"></i> info@pisangjago.com</li>
+                        <li><i class="fas fa-clock"></i> Senin - Jumat: 08.00 - 17.00</li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Pisang Jago. Hak Cipta Dilindungi.</p>
-            <div class="social-links">
-                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    &copy; 2025 Pisang Jago. All Rights Reserved.
+                </div>
+                <div class="footer-bottom-links">
+                    <a href="#">Kebijakan Privasi</a>
+                    <a href="#">Syarat & Ketentuan</a>
+                    <a href="#">Sitemap</a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobile-menu">
-        <div class="close-menu" id="close-menu">
-            <i class="fas fa-times"></i>
-        </div>
-        <ul class="mobile-menu-links">
-            <li><a href="#">Beranda</a></li>
-            <li><a href="#">Produk</a></li>
-            <li><a href="#">Buat Sendiri</a></li>
-            <li><a href="#">Tentang Kami</a></li>
-            <li><a href="#">Kontak</a></li>
-        </ul>
-    </div>
-    <div class="overlay" id="overlay"></div>
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/6281234567890" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <script>
-        // Mobile Menu Toggle
-        const mobileToggle = document.getElementById('mobile-toggle');
-        const closeMenu = document.getElementById('close-menu');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const overlay = document.getElementById('overlay');
-        const scrollDown = document.getElementById('scroll-down');
-
-        mobileToggle.addEventListener('click', () => {
-            mobileMenu.classList.add('active');
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
-
-        closeMenu.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
-
-        overlay.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
-
-        // Scroll Down Button
-        scrollDown.addEventListener('click', () => {
-            window.scrollTo({
-                top: window.innerHeight,
-                behavior: 'smooth'
-            });
-        });
-
-        // Sticky Navbar
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 100) {
-                navbar.style.background = 'rgba(93, 64, 55, 0.9)';
-                navbar.style.padding = '0.7rem 5%';
-                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-            } else {
-                navbar.style.background = 'transparent';
-                navbar.style.padding = '1rem 5%';
-                navbar.style.boxShadow = 'none';
-            }
-        });
-    </script>
-</body>
-</html>
+        
